@@ -15,7 +15,10 @@ interface RoomProps {
 
 export function Room({ children, roomId, fallback }: RoomProps) {
     return (
-        (<RoomProvider id={roomId}>
+        (<RoomProvider
+            id={roomId}
+            initialPresence={{ cursor: null }}
+        >
             <ClientSideSuspense fallback={fallback} >
                 {children}
             </ClientSideSuspense>
