@@ -2,6 +2,7 @@
 import React from 'react'
 import { LiveblocksProvider } from "@liveblocks/react/suspense"
 
+
 interface ProviderProps {
     children: React.ReactNode
 }
