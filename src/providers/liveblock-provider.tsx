@@ -9,8 +9,6 @@ interface ProviderProps {
 
 function LiveblockProvider({ children }: ProviderProps) {
 
-    const apiKey = process.env.LIVEBLOCK_PUBLIC_KEY;
-
     return (
         <LiveblocksProvider
             throttle={16}

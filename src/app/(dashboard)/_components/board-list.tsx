@@ -1,6 +1,6 @@
 "use client"
 import { useQuery } from "convex/react"
-import { api } from "@/convex/_generated/api"
+import { api } from "../../../../convex/_generated/api"
 import { EmptyBoard } from "./empty-board"
 import { EmptyFavorites } from "./empty-favorites"
 import { EmptySearch } from "./empty-search"
@@ -15,7 +15,6 @@ interface BoardListProps {
     }
 }
 export const BoardList = ({ orgId, query }: BoardListProps) => {
-    // @ts-ignore
     const data = useQuery(api.boards.get, { orgId, ...query })
 
 
@@ -58,7 +57,7 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 pb-10">
                 <NewBoardButton orgId={orgId} />
-                {data?.map((board: any) => {
+                {data?.map((board) => {
                     return <BoardCard
                         key={board._id}
                         id={board._id}

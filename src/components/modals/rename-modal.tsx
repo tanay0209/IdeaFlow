@@ -13,12 +13,13 @@ import { FormEventHandler, useEffect, useState } from "react"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useApiMutation } from "@/hooks/use-api-mutation"
-import { api } from "@/convex/_generated/api"
+import { api } from "../../../convex/_generated/api"
 import { toast } from "sonner"
+import { Id } from "@/convex/_generated/dataModel"
 
 export const RenameModal = () => {
     const { isOpen, onClose, initialValues } = useRenameModal()
-    // @ts-ignore
+
     const { mutate, pending } = useApiMutation(api.board.update)
     const [title, setTitle] = useState(initialValues.title)
 
@@ -29,7 +30,7 @@ export const RenameModal = () => {
     const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
         mutate({
-            id: initialValues.id,
+            id: initialValues.id as Id<"boards">,
             title,
         })
             .then(() => {

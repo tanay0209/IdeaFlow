@@ -61,9 +61,7 @@ function Canvas({ boardId }: CanvasProps) {
         if (canvasState.mode !== CanvasMode.Pencil || e.buttons !== 1 || !pencilDraft) {
             return;
         }
-        console.log("Inside continue drawing");
 
-        console.log("Current Pencil Draft Points:", pencilDraft);
 
         setMyPresence({
             cursor: point,
@@ -227,12 +225,10 @@ function Canvas({ boardId }: CanvasProps) {
     const onPointerMove = useMutation(({ setMyPresence }, e: React.PointerEvent) => {
         e.preventDefault();
         const current = pointerEventToCanvasPoint(e, camera)
-        console.log(canvasState);
 
         if (canvasState.mode === CanvasMode.Pressing) {
             startMultiSelection(current, canvasState.origin)
         } else if (canvasState.mode === CanvasMode.Pencil) {
-            console.log("I am here");
             continueDrawing(current, e)
         }
         else if (canvasState.mode === CanvasMode.SelectionNet) {

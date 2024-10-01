@@ -3,6 +3,18 @@ import { query } from '@/convex/_generated/server';
 import { mutation } from "./_generated/server"
 import { v } from "convex/values"
 
+const images = [
+    "/placeholders/1.svg",
+    "/placeholders/2.svg",
+    "/placeholders/3.svg",
+    "/placeholders/4.svg",
+    "/placeholders/5.svg",
+    "/placeholders/6.svg",
+    "/placeholders/7.svg",
+    "/placeholders/8.svg",
+    "/placeholders/9.svg",
+    "/placeholders/10.svg",
+];
 
 export const create = mutation({
     args: {
@@ -15,12 +27,13 @@ export const create = mutation({
             throw new Error("Unauthorized")
         }
 
+        const randomImage = images[Math.floor(Math.random() * images.length)];
         const board = await ctx.db.insert("boards", {
             title: args.title,
             orgId: args.orgId,
             authorId: identity.subject,
             authorName: identity.name!,
-            imageUrl: "/placeholder/placeholder.jpg"
+            imageUrl: randomImage
         });
         return board;
     }
@@ -35,11 +48,6 @@ export const remove = mutation({
         if (!identity) {
             throw new Error("Unauthorized")
         }
-        const board = await ctx.db.get(args.id)
-
-        if (board?.authorId !== identity.subject) {
-            throw new Error("Not authorized")
-        }
 
         const userId = identity.subject
         const existingFavorite = await ctx.db
@@ -47,7 +55,7 @@ export const remove = mutation({
             .withIndex("by_user_board", (q) =>
                 q
                     .eq("userId", userId)
-                    .eq("boardId", board._id)
+                    .eq("boardId", args.id)
             )
             .unique()
 
@@ -114,7 +122,7 @@ export const favorite = mutation({
         }
 
         await ctx.db.insert("userFavorites", {
-            userId,
+            userId: userId,
             boardId: board._id,
             orgId: args.orgId
         })
@@ -158,7 +166,10 @@ export const unfavorite = mutation({
 export const get = query({
     args: { id: v.id("boards") },
     handler: async (ctx, args) => {
-        const board = ctx.db.get(args.id)
+        const board = await ctx.db.get(args.id)
+        if (!board) {
+            throw new Error("Board not found")
+        }
         return board
     }
 })

@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { query } from "@/convex/_generated/server"
+import { query } from "./_generated/server"
 import { v } from "convex/values"
 import { getAllOrThrow } from "convex-helpers/server/relationships"
 
@@ -45,7 +44,6 @@ export const get = query({
         } else {
             boards = await ctx.db
                 .query("boards")
-                //@ts-ignore
                 .withIndex("by_org", (q) => q.eq("orgId", args.orgId))
                 .order("desc")
                 .collect()

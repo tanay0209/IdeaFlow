@@ -1,6 +1,6 @@
 "use client"
 
-import { api } from "@/convex/_generated/api"
+import { api } from "../../../../convex/_generated/api"
 import { useApiMutation } from "@/hooks/use-api-mutation"
 import { cn } from "@/lib/utils"
 import { Plus } from "lucide-react"
@@ -13,7 +13,6 @@ interface NewBoardButtonProps {
 }
 
 export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
-    // @ts-ignore
     const { mutate, pending } = useApiMutation(api.board.create)
     const router = useRouter()
     const onClick = () => {
@@ -25,7 +24,7 @@ export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
                 toast.success("Board Created")
                 router.push(`board/${id}`)
             })
-            .catch(_ => toast.error("Failed to create board"))
+            .catch(() => toast.error("Failed to create board"))
     }
     return (
         <button

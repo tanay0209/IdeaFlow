@@ -1,6 +1,6 @@
 import { Liveblocks } from "@liveblocks/node"
 import { ConvexHttpClient } from "convex/browser"
-import { api } from "@/convex/_generated/api"
+import { api } from "../../../../convex/_generated/api"
 import { auth, currentUser } from "@clerk/nextjs/server"
 
 const convex = new ConvexHttpClient(
@@ -20,7 +20,6 @@ export async function POST(req: Request) {
     }
 
     const { room } = await req.json()
-    // @ts-ignore
     const board = await convex.query(api.board.get, { id: room })
     if (board?.orgId !== authorization.orgId) {
         return new Response("Unauthorized")

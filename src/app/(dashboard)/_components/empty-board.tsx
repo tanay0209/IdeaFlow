@@ -1,5 +1,5 @@
 "use client"
-import { api } from "@/convex/_generated/api"
+import { api } from "../../../../convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useOrganization } from "@clerk/clerk-react";
@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 
 export const EmptyBoard = () => {
     const router = useRouter()
-    // @ts-ignore
     const { mutate, pending } = useApiMutation(api.board.create)
     const { organization } = useOrganization()
     const onClick = () => {
