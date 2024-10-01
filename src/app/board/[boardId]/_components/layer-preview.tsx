@@ -4,6 +4,9 @@ import { LayerType } from "@/types/canvas"
 import { useStorage } from "@liveblocks/react/suspense"
 import { memo } from "react"
 import { Rectangle } from "./Rectangle"
+import { Circle } from "./Circle"
+import { Text } from "./text"
+import { Note } from "./note-layer"
 
 interface LayerPreviewProps {
     id: string,
@@ -25,6 +28,34 @@ export const LayerPreview = memo(({ id, onLayerPointerDown, selectionColor }: La
                     onPointerDown={onLayerPointerDown}
                 />
             );
+        case LayerType.Circle:
+            return (
+                <Circle
+                    id={id}
+                    layer={layer}
+                    selectionColor={selectionColor}
+                    onPointerDown={onLayerPointerDown}
+
+                />
+            )
+        case LayerType.Text:
+            return (
+                <Text
+                    id={id}
+                    layer={layer}
+                    selectionColor={selectionColor}
+                    onPointerDown={onLayerPointerDown}
+                />
+            )
+        case LayerType.Note:
+            return (
+                <Note
+                    id={id}
+                    layer={layer}
+                    selectionColor={selectionColor}
+                    onPointerDown={onLayerPointerDown}
+                />
+            )
         default:
             console.warn("Unknown type")
             return null
