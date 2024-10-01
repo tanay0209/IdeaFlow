@@ -94,7 +94,7 @@ export type CanvasState =
     }
     | {
         mode: CanvasMode.Pressing,
-        origin:Point
+        origin: Point
     }
     | {
         mode: CanvasMode.SelectionNet,
@@ -107,12 +107,16 @@ export type CanvasState =
     }
     | {
         mode: CanvasMode.Inserting,
-        layerType:LayerType.Circle | LayerType.Rectangle | LayerType.Note | LayerType.Path |LayerType.Text
+        layerType:
+        LayerType.Circle |
+        LayerType.Rectangle |
+        LayerType.Note |
+        LayerType.Text
     }
     | {
         mode: CanvasMode.Resizing,
-        initialBounds:XYWH,
-        corner:Side
+        initialBounds: XYWH,
+        corner: Side
     }
     | {
         mode: CanvasMode.Pencil
@@ -128,4 +132,9 @@ export enum CanvasMode {
     Pencil
 }
 
-export type Layer = RectangleLayer | CircleLayer | PathLayer | NoteLayer | TextLayer
+export type Layer =
+    RectangleLayer |
+    CircleLayer |
+    PathLayer |
+    NoteLayer |
+    TextLayer

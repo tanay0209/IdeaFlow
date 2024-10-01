@@ -88,7 +88,6 @@ function Toolbar({ canRedo, canUndo, canvasState, setCanvasState, undo, redo }: 
                     icon={Pencil}
                     onClick={() => setCanvasState({
                         mode: CanvasMode.Pencil,
-
                     })}
                     isActive={
                         canvasState.mode === CanvasMode.Pencil
