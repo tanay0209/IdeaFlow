@@ -13,9 +13,9 @@ import { FormEventHandler, useEffect, useState } from "react"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useApiMutation } from "@/hooks/use-api-mutation"
-import { api } from "../../convex/_generated/api"
+import { api } from "../../../convex/_generated/api"
 import { toast } from "sonner"
-import { Id } from "@/convex/_generated/dataModel"
+import { Id } from "../../../convex/_generated/dataModel"
 
 export const RenameModal = () => {
     const { isOpen, onClose, initialValues } = useRenameModal()

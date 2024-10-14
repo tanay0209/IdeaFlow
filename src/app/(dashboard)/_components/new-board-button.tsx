@@ -1,6 +1,6 @@
 "use client"
 
-import { api } from "../../../convex/_generated/api"
+import { api } from "../../../../convex/_generated/api"
 import { useApiMutation } from "@/hooks/use-api-mutation"
 import { cn } from "@/lib/utils"
 import { Plus } from "lucide-react"

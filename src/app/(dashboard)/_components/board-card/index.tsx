@@ -9,9 +9,9 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Actions } from "@/components/actions"
 import { MoreHorizontal } from "lucide-react"
 import { useApiMutation } from "@/hooks/use-api-mutation"
-import { api } from "../../../../convex/_generated/api"
+import { api } from "../../../../../convex/_generated/api"
 import { toast } from "sonner"
-import { Id } from "../../../../convex/_generated/dataModel"
+import { Id } from "../../../../../convex/_generated/dataModel"
 
 interface BoardCardProps {
     id: string,
