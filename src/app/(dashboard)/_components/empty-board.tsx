@@ -1,5 +1,5 @@
 "use client"
-import { api } from "../../../../convex/_generated/api";
+import { api } from "../../../convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useOrganization } from "@clerk/clerk-react";

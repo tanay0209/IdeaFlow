@@ -1,4 +1,4 @@
-const config = {
+export default {
     providers: [
         {
             domain: "https://rare-ant-73.clerk.accounts.dev/",
@@ -6,5 +6,3 @@ const config = {
         },
     ]
 };
-
-export default config
