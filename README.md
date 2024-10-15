@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IdeaFlow
 
-## Getting Started
+**IdeaFlow** is a collaborative tool for idea generation and brainstorming. With real-time updates and collaboration features, users may set up organizations, collaborate on a shared canvas board, and develop ideas intuitively. Ideal for groups wishing to foster invention and creativity among themselves.
 
-First, run the development server:
+**Tech Stack**:  
+- **Frontend**: Nextjs, TypeScript, Tailwind CSS, Shadcn, Liveblocks
+- **Backend**: Node.js, TypeScript, Clerk, Convex 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tanay0209/IdeaFlow.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd IdeaFlow
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Setup convex:**
+   execute in root directory and follow the instructions or refer the documentation
+   ```bash
+   npx convex dev 
+   ```
+   > *(Or use `yarn install` if you prefer Yarn)*
+
+---
+
+## Environment Variables
+
+In the `root` directory, create a `.env` file with the following variables, some are auto generated when setting up convex and clerk:
+
+```plaintext
+CONVEX_DEPLOYMENT=
+
+NEXT_PUBLIC_CONVEX_URL=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+LIVEBLOCK_SECRET_KEY=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Replace placeholders with your actual configuration.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Routes
 
-## Learn More
+Available API endpoints:
 
-To learn more about Next.js, take a look at the following resources:
+**Board & Boards Routes:**
+- `GET api.boards.get` - Get all boards of the user
+- `GET api.board.get` - Get a specific board
+- `DELETE api.board.remove` - Remove a board
+- `PATCH api.board.update` - Update a board
+- `POST api.board.favorite` - Favorite a board
+- `POST api.board.unfavorite` - Unfavorite a board
+- `POST api.board.create` - Create a board
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Liveblocks Routes:**
+- `POST /api/liveblocks-auth` - Creation and authorization of users for a room.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+### Starting the Server and Client
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Start the Convex server:**
+   - Open a terminal in the `root` directory:
+     ```bash
+     npm convex dev
+     ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Start the Client:**
+   - Open a separate terminal in the `root` directory:
+     ```bash
+     npm run dev
+     ```
+   - Access the client at `http://localhost:3000`.
+
+3. **Interacting with API Endpoints:**
+   - Use tools like Postman or `curl` for API testing.
+
+---
